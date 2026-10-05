@@ -49,3 +49,12 @@ body.sepia{--bg:#e9dfca;--panel:#dfd3bc;--panel2:#d6c7ac;--text:#332d24;--muted:
   main{padding:18px 16px 50px}.book-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 14px}
   .sync-row{align-items:flex-start;flex-direction:column}.reader-toolbar{top:72px}
 }
+.file-reader-title{font:600 14px/1.2 Georgia,serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:45vw}
+.ebook-frame{width:100%;height:calc(100vh - 150px);min-height:520px;border:1px solid var(--line);border-radius:10px;background:#fff}
+#epubViewer{overflow:hidden}
+#pdfViewer{display:block}
+.local-ready{color:#9bcf9f}
+@media(max-width:600px){
+  .ebook-frame{height:calc(100vh - 126px);min-height:420px}
+  .file-reader-title{max-width:34vw}
+}
