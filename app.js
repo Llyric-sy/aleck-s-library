@@ -46,7 +46,8 @@ function renderBooks(){
 
 function card(b){
   const ready = Array.isArray(b.chapters) && b.chapters.length > 0;
-  const coverSrc = b.cover ? (b.cover.startsWith('http') ? b.cover : './'+b.cover.replace(/^\\.\\//,'')) : '';
+  const localCover = b.cover && b.cover.startsWith('./') ? b.cover.slice(2) : b.cover;
+  const coverSrc = localCover ? (localCover.startsWith('http') ? localCover : './'+localCover) : '';
   const cover = coverSrc ? `<img src="${coverSrc}" alt="" loading="lazy" onerror="this.style.display='none'">` : '';
   return `<article class="book-card">
     <button class="cover-button" data-book="${b.slug}" aria-label="Open ${escapeHtml(b.title)}">
