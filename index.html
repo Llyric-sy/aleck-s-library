@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#11110f">
+  <meta name="description" content="Aleck's Library — offline-first personal ebook reader">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="stylesheet" href="./styles.css">
+  <title>Aleck's Library</title>
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <p class="eyebrow">PERSONAL LIBRARY</p>
+      <h1>Aleck's Library</h1>
+    </div>
+    <div class="status" id="networkStatus">Checking…</div>
+  </header>
+
+  <main>
+    <section id="libraryView">
+      <div class="controls">
+        <label class="search">
+          <span>⌕</span>
+          <input id="searchInput" type="search" placeholder="Search title or author" autocomplete="off">
+        </label>
+        <select id="authorFilter" aria-label="Filter by author">
+          <option value="">All authors</option>
+        </select>
+      </div>
+      <div class="sync-row">
+        <span id="syncStatus">Preparing library…</span>
+        <button id="cacheAllBtn" class="ghost">Make library available offline</button>
+      </div>
+      <div id="bookGrid" class="book-grid" aria-live="polite"></div>
+    </section>
+
+    <section id="readerView" class="reader-view hidden" aria-live="polite">
+      <div class="reader-toolbar">
+        <button id="backBtn" class="ghost">← Library</button>
+        <div class="reader-tools">
+          <button id="fontDown" class="ghost" aria-label="Decrease text size">A−</button>
+          <button id="fontUp" class="ghost" aria-label="Increase text size">A+</button>
+          <button id="themeBtn" class="ghost">Theme</button>
+        </div>
+      </div>
+      <article class="reader">
+        <p class="eyebrow" id="readerAuthor"></p>
+        <h2 id="readerTitle"></h2>
+        <p class="chapter-label" id="chapterLabel"></p>
+        <div id="chapterBody" class="chapter-body"></div>
+        <div class="chapter-nav">
+          <button id="prevChapter">← Previous</button>
+          <button id="nextChapter">Next →</button>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <script src="./app.js" defer></script>
+</body>
+</html>
