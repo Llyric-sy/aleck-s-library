@@ -5,7 +5,7 @@
     "author": "Ana Huang",
     "series": "Twisted",
     "seriesIndex": 1,
-    "cover": "books/twisted-love/cover.webp",
+    "cover": "https://www.sourcebooks.com/media/catalog/product/9/7/9781728274867-3D.jpg",
     "chapters": []
   },
   {
@@ -14,7 +14,7 @@
     "author": "Ana Huang",
     "series": "Twisted",
     "seriesIndex": 3,
-    "cover": "books/twisted-hate/cover.webp",
+    "cover": "https://www.sourcebooks.com/media/catalog/product/9/7/9781728274881_2.jpg",
     "chapters": []
   },
   {
@@ -23,49 +23,49 @@
     "author": "Ana Huang",
     "series": "Twisted",
     "seriesIndex": 4,
-    "cover": "books/twisted-lies/cover.webp",
+    "cover": "https://www.sourcebooks.com/media/catalog/product/9/7/9781728274898-3D.jpg",
     "chapters": []
   },
   {
     "slug": "love-theoretically",
     "title": "Love, Theoretically",
     "author": "Ali Hazelwood",
-    "cover": "books/love-theoretically/cover.webp",
+    "cover": "https://images1.penguinrandomhouse.com/cover/9780593638859",
     "chapters": []
   },
   {
     "slug": "love-on-the-brain",
     "title": "Love on the Brain",
     "author": "Ali Hazelwood",
-    "cover": "books/love-on-the-brain/cover.webp",
+    "cover": "https://images1.penguinrandomhouse.com/cover/9780593336847",
     "chapters": []
   },
   {
     "slug": "not-in-love",
     "title": "Not in Love",
     "author": "Ali Hazelwood",
-    "cover": "books/not-in-love/cover.webp",
+    "cover": "https://images1.penguinrandomhouse.com/cover/9780593550434",
     "chapters": []
   },
   {
     "slug": "two-can-play",
     "title": "Two Can Play",
     "author": "Ali Hazelwood",
-    "cover": "books/two-can-play/cover.webp",
+    "cover": "https://images2.penguinrandomhouse.com/cover/9798217192694",
     "chapters": []
   },
   {
     "slug": "the-player-next-door",
     "title": "The Player Next Door",
     "author": "Elizabeth Davis",
-    "cover": "books/the-player-next-door/cover.webp",
+    "cover": "https://hachette.imgix.net/books/9781472297563.jpg?auto=compress&w=700",
     "chapters": []
   },
   {
     "slug": "two-can-play-that-game",
     "title": "Two Can Play That Game",
     "author": "Leanne Yong",
-    "cover": "books/two-can-play-that-game/cover.webp",
+    "cover": "https://covers.openlibrary.org/b/isbn/9781761063374-L.jpg",
     "chapters": []
   }
 ]
