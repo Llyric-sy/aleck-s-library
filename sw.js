@@ -1,5 +1,5 @@
-const SHELL = 'alecks-library-shell-v2';
-const BOOKS = 'alecks-library-books-v2';
+const SHELL = 'alecks-library-shell-v3';
+const BOOKS = 'alecks-library-books-v3';
 const SHELL_FILES = [
   './','./index.html','./styles.css','./app.js','./manifest.webmanifest','./books/catalog.json'
 ];
