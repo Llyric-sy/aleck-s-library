@@ -1,0 +1,9 @@
+{
+  "name": "Aleck's Library",
+  "short_name": "Library",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#11110f",
+  "theme_color": "#11110f",
+  "description": "Offline-first personal ebook reader"
+}
