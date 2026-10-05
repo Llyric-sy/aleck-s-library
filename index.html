@@ -56,8 +56,28 @@
         </div>
       </article>
     </section>
+
+    <section id="fileReaderView" class="reader-view hidden" aria-live="polite">
+      <div class="reader-toolbar">
+        <button id="fileBackBtn" class="ghost">← Library</button>
+        <div class="file-reader-title" id="fileReaderTitle"></div>
+        <div class="reader-tools" id="epubTools">
+          <button id="epubPrev" class="ghost">←</button>
+          <button id="epubNext" class="ghost">→</button>
+        </div>
+      </div>
+      <div id="epubViewer" class="ebook-frame hidden"></div>
+      <iframe id="pdfViewer" class="ebook-frame hidden" title="PDF reader"></iframe>
+      <article id="textViewer" class="reader hidden">
+        <div id="textViewerBody" class="chapter-body"></div>
+      </article>
+    </section>
+
+    <input id="bookFileInput" type="file" accept=".epub,.pdf,.txt,text/plain,application/epub+zip,application/pdf" hidden>
   </main>
 
-  <script src="./app.js?v=3" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/epubjs@0.3.93/dist/epub.min.js"></script>
+  <script src="./app.js?v=4" defer></script>
 </body>
 </html>
