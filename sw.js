@@ -1,5 +1,5 @@
-const SHELL = 'alecks-library-shell-v1';
-const BOOKS = 'alecks-library-books-v1';
+const SHELL = 'alecks-library-shell-v2';
+const BOOKS = 'alecks-library-books-v2';
 const SHELL_FILES = [
   './','./index.html','./styles.css','./app.js','./manifest.webmanifest','./books/catalog.json'
 ];
@@ -9,21 +9,40 @@ self.addEventListener('install', event => {
 });
 
 self.addEventListener('activate', event => {
-  event.waitUntil(self.clients.claim());
+  event.waitUntil((async () => {
+    const keep = new Set([SHELL, BOOKS]);
+    const keys = await caches.keys();
+    await Promise.all(keys.filter(k => !keep.has(k)).map(k => caches.delete(k)));
+    await self.clients.claim();
+  })());
 });
 
 self.addEventListener('fetch', event => {
   const req = event.request;
   if(req.method !== 'GET') return;
+
+  const url = new URL(req.url);
+  const isBookAsset = url.pathname.includes('/books/') && !url.pathname.endsWith('/catalog.json');
+
+  if(isBookAsset || url.origin !== self.location.origin){
+    event.respondWith(
+      caches.match(req).then(hit => hit || fetch(req).then(res => {
+        const clone = res.clone();
+        caches.open(BOOKS).then(c => c.put(req, clone));
+        return res;
+      }))
+    );
+    return;
+  }
+
+  // Network-first for the app shell so updates arrive whenever a connection exists,
+  // with cached copies used when reception is unavailable.
   event.respondWith(
-    caches.match(req).then(hit => hit || fetch(req).then(res => {
+    fetch(req).then(res => {
       const clone = res.clone();
-      caches.open(req.url.includes('/books/') ? BOOKS : SHELL).then(c => c.put(req, clone));
+      caches.open(SHELL).then(c => c.put(req, clone));
       return res;
-    }).catch(() => {
-      if(req.mode === 'navigate') return caches.match('./index.html');
-      throw new Error('offline');
-    }))
+    }).catch(() => caches.match(req).then(hit => hit || caches.match('./index.html')))
   );
 });
 
@@ -34,12 +53,16 @@ self.addEventListener('message', event => {
     const cache = await caches.open(BOOKS);
     let done = 0;
     for(const raw of urls){
-      const url = raw.startsWith('http') ? raw : './' + raw.replace(/^\.\//,'');
+      const url = raw.startsWith('http') ? raw : new URL('./' + raw.replace(/^\.\//,''), self.registration.scope).href;
       try{
-        const hit = await cache.match(url);
+        const request = new Request(url, {
+          mode: new URL(url).origin === self.location.origin ? 'same-origin' : 'no-cors',
+          credentials: 'omit'
+        });
+        const hit = await cache.match(request);
         if(!hit){
-          const res = await fetch(url);
-          if(res.ok) await cache.put(url, res.clone());
+          const res = await fetch(request);
+          if(res.ok || res.type === 'opaque') await cache.put(request, res.clone());
         }
       }catch{}
       done++;
