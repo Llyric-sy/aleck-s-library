@@ -24,6 +24,7 @@ async function loadCatalog(){
   populateAuthors();
   renderBooks();
   $('#syncStatus').textContent = `${state.catalog.length} books in library`;
+  autoCacheLibrary();
 }
 
 function populateAuthors(){
@@ -57,6 +58,22 @@ function card(b){
       <div class="book-meta"><span class="dot ${ready?'ready':''}"></span><span>${ready ? b.chapters.length+' chapters' : 'Not packaged yet'}</span></div>
     </button>
   </article>`;
+}
+
+function libraryAssetList(){
+  return state.catalog.flatMap(b => [b.cover, ...(b.chapters||[])]).filter(Boolean);
+}
+
+async function autoCacheLibrary(){
+  if(!('serviceWorker' in navigator)) return;
+  try{
+    const reg = await navigator.serviceWorker.ready;
+    const worker = reg.active || reg.waiting || reg.installing;
+    const all = libraryAssetList();
+    if(!all.length) return;
+    worker?.postMessage({type:'CACHE_LIBRARY', urls:all});
+    $('#syncStatus').textContent = 'Syncing library for offline reading…';
+  }catch{}
 }
 
 async function openBook(slug){
@@ -107,14 +124,7 @@ $('#fontDown').addEventListener('click', () => changeFont(-1));
 function changeFont(dir){ const root=document.documentElement; const current=parseFloat(getComputedStyle(root).getPropertyValue('--reader-size')); root.style.setProperty('--reader-size', Math.max(15,Math.min(28,current+dir))+'px'); }
 $('#themeBtn').addEventListener('click', () => { const seq=['dark','light','sepia']; setTheme(seq[(seq.indexOf(state.theme)+1)%seq.length]); });
 
-$('#cacheAllBtn').addEventListener('click', async () => {
-  if(!('serviceWorker' in navigator)) return alert('Offline caching is not supported in this browser.');
-  const reg = await navigator.serviceWorker.ready;
-  const all = state.catalog.flatMap(b => [b.cover, ...(b.chapters||[])]).filter(Boolean);
-  const worker = reg.active || reg.waiting || reg.installing;
-  worker?.postMessage({type:'CACHE_LIBRARY', urls:all});
-  $('#syncStatus').textContent = 'Caching library in the background…';
-});
+$('#cacheAllBtn').addEventListener('click', autoCacheLibrary);
 
 navigator.serviceWorker?.addEventListener('message', e => {
   if(e.data?.type === 'CACHE_PROGRESS') $('#syncStatus').textContent = `Offline sync: ${e.data.done}/${e.data.total}`;
