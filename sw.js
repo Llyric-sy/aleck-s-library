@@ -1,7 +1,7 @@
-const SHELL = 'alecks-library-shell-v3';
-const BOOKS = 'alecks-library-books-v3';
+const SHELL = 'alecks-library-shell-v4';
+const BOOKS = 'alecks-library-books-v4';
 const SHELL_FILES = [
-  './','./index.html','./styles.css','./app.js','./manifest.webmanifest','./books/catalog.json'
+  './','./index.html','./styles.css','./app.js?v=4','./manifest.webmanifest','./books/catalog.json','https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js','https://cdn.jsdelivr.net/npm/epubjs@0.3.93/dist/epub.min.js'
 ];
 
 self.addEventListener('install', event => {
