@@ -1,0 +1,71 @@
+[
+  {
+    "slug": "twisted-love",
+    "title": "Twisted Love",
+    "author": "Ana Huang",
+    "series": "Twisted",
+    "seriesIndex": 1,
+    "cover": "books/twisted-love/cover.webp",
+    "chapters": []
+  },
+  {
+    "slug": "twisted-hate",
+    "title": "Twisted Hate",
+    "author": "Ana Huang",
+    "series": "Twisted",
+    "seriesIndex": 3,
+    "cover": "books/twisted-hate/cover.webp",
+    "chapters": []
+  },
+  {
+    "slug": "twisted-lies",
+    "title": "Twisted Lies",
+    "author": "Ana Huang",
+    "series": "Twisted",
+    "seriesIndex": 4,
+    "cover": "books/twisted-lies/cover.webp",
+    "chapters": []
+  },
+  {
+    "slug": "love-theoretically",
+    "title": "Love, Theoretically",
+    "author": "Ali Hazelwood",
+    "cover": "books/love-theoretically/cover.webp",
+    "chapters": []
+  },
+  {
+    "slug": "love-on-the-brain",
+    "title": "Love on the Brain",
+    "author": "Ali Hazelwood",
+    "cover": "books/love-on-the-brain/cover.webp",
+    "chapters": []
+  },
+  {
+    "slug": "not-in-love",
+    "title": "Not in Love",
+    "author": "Ali Hazelwood",
+    "cover": "books/not-in-love/cover.webp",
+    "chapters": []
+  },
+  {
+    "slug": "two-can-play",
+    "title": "Two Can Play",
+    "author": "Ali Hazelwood",
+    "cover": "books/two-can-play/cover.webp",
+    "chapters": []
+  },
+  {
+    "slug": "the-player-next-door",
+    "title": "The Player Next Door",
+    "author": "Elizabeth Davis",
+    "cover": "books/the-player-next-door/cover.webp",
+    "chapters": []
+  },
+  {
+    "slug": "two-can-play-that-game",
+    "title": "Two Can Play That Game",
+    "author": "Leanne Yong",
+    "cover": "books/two-can-play-that-game/cover.webp",
+    "chapters": []
+  }
+]
